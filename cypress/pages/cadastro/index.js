@@ -13,7 +13,6 @@ class Cadastro {
         const fakeNome = `${firstName} ${lastName}`
 
         Cypress.env('fakeNome', fakeNome)
-        Cypress.env('fakeNome')
         
         cy.get('[data-qa="signup-name"]').type(Cypress.env('fakeNome'))
         cy.get('[data-qa="signup-email"]').type(faker.internet.email())
