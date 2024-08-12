@@ -12,7 +12,7 @@ import pagamento from '../pages/pagamento'
 describe('Automation Exercise', () => {
 
   beforeEach(() => {
-    cy.visit('https://automationexercise.com')
+    cy.visit('/')
   })
 
   it('Test Case 1: Register a new user', () => {
