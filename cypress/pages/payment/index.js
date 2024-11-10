@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker' 
 
-class Pagamento {
-    preencheFormularioPagamento(){
+class Payment {
+    fillPaymentForm(){
         cy.get('[data-qa="name-on-card"]').type(faker.person.fullName())
         cy.get('[data-qa="card-number"]').type(faker.finance.creditCardNumber())
         cy.get('[data-qa="cvc"]').type(faker.finance.creditCardCVV())
@@ -10,9 +10,9 @@ class Pagamento {
         cy.get('[data-qa="pay-button"]').click()
     }
 
-    verificaSePagamentoFoiConcluidoEPedidoCriado(){
+    verifyPaymentAndOrderCompleted(){
         cy.get('[data-qa="order-placed"]').should('be.visible')
     }
 }
 
-export default new Pagamento()
+export default new Payment()

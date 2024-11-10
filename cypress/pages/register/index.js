@@ -1,13 +1,13 @@
 import { faker } from "@faker-js/faker"
 
-class Cadastro {
-    iniciarCadastro(usuario, email){
+class Register {
+    startRegistration(usuario, email){
         cy.get('[data-qa="signup-name"]').type(usuario)
         cy.get('[data-qa="signup-email"]').type(email)
         cy.contains('button', 'Signup').click()
     }
 
-    preencherFormulario(){
+    fillRegistrationForm(){
         const firstName = faker.person.firstName()
         const lastName = faker.person.lastName()
         const fakeNome = `${firstName} ${lastName}`
@@ -37,16 +37,16 @@ class Cadastro {
         cy.contains('Create Account').click()
     }
 
-    verificarSeCadastroFoiConcluido(){
+    verifyRegistrationCompleted(){
         cy.url().should('includes', 'account_created')
         cy.get('[data-qa="account-created"]').should('be.visible')
         cy.get('[data-qa="continue-button"]').click()
         cy.get('i.fa-user').parent().should('contain', Cypress.env('fakeNome'))
     }
 
-    validaMensagemDeUsuarioExistente() {
+    verifyExistingUserMessage() {
         cy.get(`.signup-form form p`).should('be.visible').and('contain', 'Email Address already exist!')
     }
 }
 
-export default new Cadastro()
+export default new Register()

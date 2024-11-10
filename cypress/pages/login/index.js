@@ -1,20 +1,20 @@
 class Login {
-    preencherLogin(usuario, senha){
-        cy.get('[data-qa="login-email"]').type(usuario);
-        cy.get('[data-qa="login-password"]').type(senha, { log: false });
+    fillLoginForm(user, password){
+        cy.get('[data-qa="login-email"]').type(user);
+        cy.get('[data-qa="login-password"]').type(password, { log: false });
         cy.get('[data-qa="login-button"]').click();
     }
 
-    verificarSeLoginObteveSucesso(usuario){
-        cy.get('i.fa-user').parent().should('contain', usuario)
+    verifySuccessfulLogin(user){
+        cy.get('i.fa-user').parent().should('contain', user)
     }
 
-    verificaSeLogoutObteveSucesso(){
+    verifySuccessfulLogout(){
         cy.url().should('contain', 'login')
         cy.contains("Login to your account").should("be.visible")
     }
 
-    verificaMensagemDeErroLoginInvalido(){
+    verifyInvalidLoginErrorMessage(){
         cy.get('.login-form form p').parent().should('contain', 'Your email or password is incorrect!')
     }
 }

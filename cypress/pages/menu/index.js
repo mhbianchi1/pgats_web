@@ -1,13 +1,13 @@
 const MENUS = {
-    PRODUTOS: 'Products',
-    LOGIN_CADASTRO: 'Signup',
-    CONTATO: 'Contact us',
+    PRODUCTS: 'Products',
+    SIGNUP_LOGIN: 'Signup',
+    CONTACT: 'Contact us',
     LOGOUT: 'Logout',
-    EXCLUIR_CONTA: 'Delete Account'
+    DELETE_ACCOUNT: 'Delete Account'
 }
 
 class Menu {
-    irPara(menu){
+    navigateTo(menu){
         cy.contains(menu).click()
     }
 }

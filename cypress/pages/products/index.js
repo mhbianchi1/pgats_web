@@ -1,10 +1,10 @@
-class Produtos {
-    verificaSeAcessouPaginaDeProdutos(){
+class Products {
+    verifyProductPageAccess(){
         cy.url().should('contain', 'products')
         cy.get('.title').should('be.visible').and('contain', 'All Products')
     }
 
-    selecionaPrimeiroProdutoDaLista(){
+    selectFirstProductInList(){
         cy.get('.single-products')
             .should('be.visible')
             .and('have.length.at.least', 1)
@@ -14,18 +14,18 @@ class Produtos {
             .click()
     }
 
-    pesquisaProdutoDesejado(produto){
-        cy.get('input#search_product').type(produto)
+    searchForProduct(product){
+        cy.get('input#search_product').type(product)
         cy.get('button#submit_search').click()
     }
 
-    verificaSeProdutoFoiExibido(){
+    verifyProductDetailsDisplayed(){
         cy.get('.product-information > h2').should('be.visible')
         cy.get('.product-information p').should('be.visible').and('have.length', 4)
         cy.get('.product-information span span').should('be.visible')
     }
 
-    verificaSeProdutoDesejadoFoiEncontrado(){
+    verifyProductFound(){
         cy.get('.title').should('be.visible').and('contain', 'Searched Products')
         cy.get('.single-products')
             .should('be.visible')
@@ -33,4 +33,4 @@ class Produtos {
     }
 }
 
-export default new Produtos()
+export default new Products()

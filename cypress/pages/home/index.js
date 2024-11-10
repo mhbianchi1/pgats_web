@@ -1,28 +1,28 @@
 import { faker } from '@faker-js/faker' 
 
 class Home {
-    navegarParaSubscription(){
+    navigateToSubscription(){
         cy.get('input#susbscribe_email').scrollIntoView()
     }
 
-    preencherSubscription(){
+    fillSubscriptionForm(){
         cy.get('input#susbscribe_email').type(faker.internet.email())
         cy.get('button#subscribe').click()
     }
 
-    verificaSeSubscriptionFoiConcluido(){
+    verifySubscriptionCompleted(){
         cy.contains('You have been successfully subscribed!').should('be.visible')
     }
 
-    adicionarItemNoCarrinho(){
+    addItemToCart(){
         cy.contains("Add to cart").click()
     }
 
-    visualizarCarrinho(){
+    viewCart(){
         cy.contains("View Cart").click()
     }
 
-    verificaSeContaFoiExcluida(){
+    verifyAccountDeletion(){
         cy.get('b').should('contain', 'Account Deleted!')
         cy.get('[data-qa="continue-button"]').click()
     }

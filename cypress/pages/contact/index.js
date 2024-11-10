@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker' 
 
-class Contato {
-    preencherFormularioDeContato(){
+class Contact {
+    fillContactForm(){
         cy.get(`.contact-form h2`)
         .should('be.visible')
         .and('have.text', 'Get In Touch')
@@ -14,9 +14,9 @@ class Contato {
       cy.get('[data-qa="submit-button"]').click()
     }
 
-    verficaSeEnvioFormularioContatoObteveSucesso(){
+    verifyContactFormSubmission(){
         cy.get('.status').should('have.text', 'Success! Your details have been submitted successfully.')
     }
 }
 
-export default new Contato()
+export default new Contact()
